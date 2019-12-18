@@ -11,27 +11,26 @@
     <link rel="stylesheet" href="index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="  https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
 <body>
-    <section class="section">
-        <div class="container is-fluid">
-            <div id="folders" class="columns">
-                <div class="column" v-for="folder in githubFolders">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                                {{hf.toHeaderCase(folder.name)}}
-                            </p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                <div class="list is-hoverable">
-                                    <a class="list-item is-link" v-for="file in folder.files"
-                                        v-bind:href="file.url">{{hf.toMdFileCase(file.name)}}</a>
-                                </div>
+    <section id="folders" class="section" v-if="enabled">
+        <div class="columns">
+            <div class="column" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{hf.toHeaderCase(folder.name)}}
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="list is-hoverable">
+                                <a class="list-item is-link" v-for="file in folder.files"
+                                    v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</a>
                             </div>
                         </div>
                     </div>
@@ -39,6 +38,25 @@
             </div>
         </div>
     </section>
+
+    <section id="file" class="" v-if="enabled && md.type=='file'">
+        <div class="hero is-medium is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        {{md.name}}
+                    </h1>
+                    <h2 class="subtitle" v-on:click="home()">
+                        Go Home
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div v-html="hf.md2Html(atob(md.content))"></div>
+        </div>
+    </section>
+
 </body>
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
