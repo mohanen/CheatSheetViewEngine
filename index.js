@@ -6,15 +6,14 @@ const repoDetails = {
 const repo_url = repoDetails.github_api_url + "/" + repoDetails.username + "/" + repoDetails.repo_name;
 const repo_content_url = repo_url + "/contents";
 
-var defaultOptions = showdown.getDefaultOptions();
-defaultOptions.simplifiedAutoLink = true;
-defaultOptions.tables = true;
-defaultOptions.smartIndentationFix = true;
-defaultOptions.requireSpaceBeforeHeadingText = true;
-defaultOptions.openLinksInNewWindow = true;
-defaultOptions.emoji = true;
-var converter = new showdown.Converter(defaultOptions);
-converter.setFlavor('github');
+var mdit = window.markdownit({
+    html: false,        // Enable HTML tags in source
+    breaks: false,        // Convert '\n' in paragraphs into <br>
+    linkify: true,        // Autoconvert URL-like text to links
+    typographer: true,
+    quotes: '“”‘’',
+    highlight: function (/*str, lang*/) { return ''; }
+});
 
 var vueFolder = new Vue({
     el: '#folders',
@@ -58,6 +57,7 @@ function openMd(mdFileUrl) {
 function home() {
     vueFolder.enabled = true;
     vueFile.enabled = false;
+    vueFile.md = "";
     updateHome();
 }
 
