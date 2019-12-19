@@ -2,22 +2,18 @@ function cheatSheetParser(HtmlString) {
     // return HtmlString;
 
     HPrntDivClass = {
-        1: "section",
-        2: "columns",
-        3: "column",
-        4: "box",
+        1: "before section",
+        2: "before",
+        3: "before",
+        4: "before",
     }
-    // for (idx = 1; idx < 4; idx++) {
-    //     HtmlStringArr = HtmlString.split("<h" + idx + ">")
-    //     HtmlString = HtmlStringArr[0] + "<div class=" + HPrntDivClass[idx] + "><h" + idx + " class='is-full'>" + HtmlStringArr[1]
+    HPrntDivClassInner = {
+        1: "after columns",
+        2: "after column",
+        3: "after box",
+        4: "after",
+    }
 
-    //     for (i = 2; i < HtmlStringArr.length; i++) {
-    //         HtmlString += "</div><div class=" + HPrntDivClass[idx] + "><h" + idx + " class='is-full'>" + HtmlStringArr[i]
-    //     }
-    //     HtmlString += "</div>"
-    // }
-
-    // HtmlString.replace("<table", "<table class='table'")
     headersStack = []
     for (i = 0; i < HtmlString.length; i++) {
         if (HtmlString[i] != '<') continue;
@@ -39,6 +35,16 @@ function cheatSheetParser(HtmlString) {
             HtmlString = HtmlString.slice(0, i - 2) + element_div + HtmlString.slice(i - 2, i + 1) + header_class + HtmlString.slice(i + 1)
             i += element_div.length + header_class.length;
 
+        } else if (HtmlString[i] == '/' && HtmlString[i + 1] == 'h') {
+            i += 2;
+            header_weight = parseInt(HtmlString[i]);
+            headersStack.push(header_weight)
+            while (HtmlString[i++] != '>');
+            i++;
+            element_div = "<div class='" + HPrntDivClassInner[header_weight] + "'>"
+            HtmlString = HtmlString.slice(0, i) + element_div + HtmlString.slice(i)
+            i += element_div.length;
+
         } else if (i == HtmlString.length - 1) {
             if (headersStack.length > 0) {
                 while (parseInt(HtmlString[i]) <= headersStack[headersStack.length - 1]) {
@@ -49,6 +55,7 @@ function cheatSheetParser(HtmlString) {
                 }
             }
         }
+        i--;
     }
     console.log(HtmlString)
     return HtmlString;
