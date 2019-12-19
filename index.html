@@ -7,7 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cheater</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+
+
     <link rel="stylesheet" href="index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
@@ -17,21 +25,33 @@
 </head>
 
 <body>
-    <section id="folders" class="section" v-if="enabled">
-        <div class="columns">
-            <div class="column" v-for="folder in githubFolders" v-if="folder.type=='dir'">
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            {{hf.toHeaderCase(folder.name)}}
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="list is-hoverable">
-                                <a class="list-item is-link" v-for="file in folder.files"
-                                    v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</a>
-                            </div>
+
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" v-on:click="home()>
+                <span class=" uk-icon uk-margin-small-right" uk-icon="icon: pencil"></span>
+                CheatSheet
+            </a>
+        </div>
+    </nav>
+
+    <section id="folders" class="uk-section" v-if="enabled">
+        <div class="uk-container">
+            <h1 class="uk-heading-medium uk-heading-divider">Cheat Sheets</h1>
+            <div uk-grid="masonry: true" class="">
+                <div class="uk-width-1-3@s" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+                    <div class="uk-margin uk-card">
+                        <header class="uk-card-header">
+                            <p class="uk-card-title uk-dropcap">
+                                {{hf.toHeaderCase(folder.name)}}
+                            </p>
+                        </header>
+                        <div class="uk-card-body">
+                            <ul class="uk-list uk-list-bullet">
+                                <li v-for="file in folder.files">
+                                    <a class="" v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -39,24 +59,14 @@
         </div>
     </section>
 
-    <section id="file" class="" v-if="enabled && md.type=='file'">
-        <div class="hero is-primary is-bold">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        {{md.name}}
-                    </h1>
-                    <h2 class="subtitle" v-on:click="home()">
-                        Go Home
-                    </h2>
-                </div>
+    <section id="file" class="uk-section" v-if="enabled && md.type=='file'">
+        <div class="uk-container">
+            <h1 class="uk-heading-medium uk-heading-divider">{{hf.toMdFileCase(md.name)}}</h1>
+            <div class="content" v-html="cheatSheetParser(mdit.render(atob(md.content)))" uk-accordion="multiple: true">
             </div>
         </div>
-        <div class="container">
-            <div class="content" v-html="cheatSheetParser(mdit.render(atob(md.content)))"></div>
-        </div>
     </section>
-
+    <a href="#" uk-totop uk-scroll></a>
 </body>
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

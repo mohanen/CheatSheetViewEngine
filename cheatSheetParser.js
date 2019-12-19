@@ -2,22 +2,22 @@ function cheatSheetParser(HtmlString) {
     // return HtmlString;
 
     HPrntDivClass = {
-        1: "before section",
-        2: "before column card",
-        3: "before box",
+        1: "before section uk-margin-large",
+        2: "before uk-card uk-card-default",
+        3: "before box uk-margin-large-bottom",
         4: "before",
     }
-    HPrntDivClassInner = {
-        1: "after columns",
-        2: "after card-content",
-        3: "after ",
-        4: "after",
+    HPrntDivAttrInner = {
+        1: 'class="after uk-accordion-content" uk-grid="masonry: true"',
+        2: 'class="after uk-card-body"',
+        3: 'class="after uk-overflow-auto"',
+        4: 'class="after"',
     }
 
     headerClass = {
-        1: "after",
-        2: "is-primary is-light card-header card-header-title",
-        3: "after",
+        1: "after uk-accordion-title uk-heading-medium uk-heading-divider",
+        2: "uk-card-header uk-card-title uk-heading-small uk-heading-line",
+        3: "after uk-heading-bullet",
         4: "after",
     }
 
@@ -38,7 +38,7 @@ function cheatSheetParser(HtmlString) {
             }
             headerWeight = parseInt(HtmlString[i]);
             headersStack.push(headerWeight)
-            element_div = "<div class='" + HPrntDivClass[headerWeight] + "'>"
+            element_div = "<div class='" + HPrntDivClass[headerWeight] + "'>" 
             headerClassTag = " class='" + headerClass[headerWeight] + "' "
             HtmlString = HtmlString.slice(0, i - 2) + element_div + HtmlString.slice(i - 2, i + 1) + headerClassTag + HtmlString.slice(i + 1)
             i += element_div.length + headerClassTag.length;
@@ -49,7 +49,7 @@ function cheatSheetParser(HtmlString) {
             headersStack.push(headerWeight)
             while (HtmlString[i++] != '>');
             i++;
-            element_div = "<div class='" + HPrntDivClassInner[headerWeight] + "'>"
+            element_div = "<div " + HPrntDivAttrInner[headerWeight] + ">"
             HtmlString = HtmlString.slice(0, i) + element_div + HtmlString.slice(i)
             i += element_div.length;
 
@@ -65,19 +65,11 @@ function cheatSheetParser(HtmlString) {
         }
         i--;
     }
-    console.log(HtmlString)
+
+    HtmlString = HtmlString.replace(/<table>/g, "<table class='uk-table uk-table-responsive'>")
+    HtmlString = HtmlString.replace(/<blockquote>/g, "<blockquote class='uk-card-footer'>")
+
     return HtmlString;
 
 }
 
-/*
-H1
-    H2
-    H2
-        H3
-        2 close
-    H2
-H1
-    H2
-        H3
-*/
