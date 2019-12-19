@@ -70,9 +70,6 @@ const hf = {
     },
     toHeaderCase: text => (hf.toSentenceCase(text).toUpperCase()),
     toMdFileCase: text => (hf.toSentenceCase(text).slice(0, -".md".length)),
-    md2Html: function (mdString) {
-        return converter.makeHtml(mdString);
-    }
 }
 
 home();

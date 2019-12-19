@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="container">
-            <div v-html="hf.md2Html(atob(md.content))"></div>
+            <div v-html="md2Html(atob(md.content))"></div>
         </div>
     </section>
 
@@ -61,5 +61,6 @@
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="index.js"></script>
+<script src="md2Html.js"></script>
 
 </html>
