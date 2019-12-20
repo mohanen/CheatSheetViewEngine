@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <span></span>
+
     <section id="folders" class="container" v-if="enabled">
         <h1 class="header">
             Deja Vu
@@ -43,6 +43,8 @@
     </section>
 
     <section id="file" class="container" v-if="enabled">
+            <span class="fab-home" onclick="home()"><</span>
+
         <h1 class="header">
             {{hf.toMdFileCase(md.path.replace("/"," / "))}}
             <span class="muted">cheatsheet</span>

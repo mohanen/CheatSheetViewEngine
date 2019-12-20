@@ -12,7 +12,7 @@ h1, li, span, a {
     text-align: center;
 }
 
-h1.header-text::before{
+h1.header-text::before {
     content: '# ';
     color: rgba(190, 196, 204);
 }
@@ -40,7 +40,7 @@ h3 {
     position: relative;
 }
 
-.ovrflw-auto{
+.ovrflw-auto {
     overflow: auto;
 }
 
@@ -134,4 +134,20 @@ h2.line::after {
 
 .footer {
     height: 100px;
+}
+
+.fab-home {
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+    line-height: 1.8rem;
+    position: fixed;
+    left: 5%;
+    top: 5%;
+    background-color: #745fb5;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
 }
