@@ -2,22 +2,22 @@ function cheatSheetParser(HtmlString) {
     // return HtmlString;
 
     HeaderWrapperAttr = {
-        1: 'class="section uk-margin-large uk-animation-slide-bottom"',
-        2: 'class="uk-card md-card uk-background-default uk-box-shadow-small"',
-        3: 'class="box uk-margin-large-bottom"',
+        1: 'class=""',
+        2: 'class="col-3 mw-300"',
+        3: 'class="cheat-card"',
         4: 'class=""',
     }
     HeaderChildWrapperAttr = {
-        1: 'class="uk-accordion-content" uk-grid="masonry: true"',
-        2: 'class="uk-card-body"',
-        3: 'class="uk-overflow-auto"',
+        1: 'class="row"',
+        2: 'class=""',
+        3: 'class=""',
         4: 'class=""',
     }
 
     headerAttr = {
-        1: 'class=" uk-accordion-title uk-heading-medium uk-heading-divider uk-text-light"',
-        2: 'class="uk-card-header uk-card-title uk-heading-small uk-text-light"',
-        3: 'class="uk-heading-bullet"',
+        1: 'class=""',
+        2: 'class="header-text"',
+        3: 'class=""',
         4: 'class=""',
     }
 
