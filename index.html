@@ -19,7 +19,7 @@
         </h1>
         <div class="row">
 
-            <div class="col-3 mw-250" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+            <div class="col-3 mw-250 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
 
                 <h2 class="header-text">
                     {{hf.toHeaderCase(folder.name)}}
