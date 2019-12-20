@@ -1,24 +1,24 @@
 function cheatSheetParser(HtmlString) {
     // return HtmlString;
 
-    HPrntDivClass = {
-        1: "before section uk-margin-large uk-animation-slide-bottom",
-        2: "before uk-card md-card uk-background-default uk-box-shadow-small",
-        3: "before box uk-margin-large-bottom",
-        4: "before",
+    HeaderWrapperAttr = {
+        1: 'class="section uk-margin-large uk-animation-slide-bottom"',
+        2: 'class="uk-card md-card uk-background-default uk-box-shadow-small"',
+        3: 'class="box uk-margin-large-bottom"',
+        4: 'class=""',
     }
-    HPrntDivAttrInner = {
-        1: 'class="after uk-accordion-content" uk-grid="masonry: true"',
-        2: 'class="after uk-card-body"',
-        3: 'class="after uk-overflow-auto"',
-        4: 'class="after"',
+    HeaderChildWrapperAttr = {
+        1: 'class="uk-accordion-content" uk-grid="masonry: true"',
+        2: 'class="uk-card-body"',
+        3: 'class="uk-overflow-auto"',
+        4: 'class=""',
     }
 
-    headerClass = {
-        1: "after uk-accordion-title uk-heading-medium uk-heading-divider uk-text-light",
-        2: "uk-card-header uk-card-title uk-heading-small uk-text-light",
-        3: "after uk-heading-bullet",
-        4: "after",
+    headerAttr = {
+        1: 'class=" uk-accordion-title uk-heading-medium uk-heading-divider uk-text-light"',
+        2: 'class="uk-card-header uk-card-title uk-heading-small uk-text-light"',
+        3: 'class="uk-heading-bullet"',
+        4: 'class=""',
     }
 
     headersStack = []
@@ -38,8 +38,8 @@ function cheatSheetParser(HtmlString) {
             }
             headerWeight = parseInt(HtmlString[i]);
             headersStack.push(headerWeight)
-            element_div = "<div class='" + HPrntDivClass[headerWeight] + "'>"
-            headerClassTag = " class='" + headerClass[headerWeight] + "' "
+            element_div = "<div " + HeaderWrapperAttr[headerWeight] + ">"
+            headerClassTag = " " + headerAttr[headerWeight] + " "
             HtmlString = HtmlString.slice(0, i - 2) + element_div + HtmlString.slice(i - 2, i + 1) + headerClassTag + HtmlString.slice(i + 1)
             i += element_div.length + headerClassTag.length;
 
@@ -49,7 +49,7 @@ function cheatSheetParser(HtmlString) {
             headersStack.push(headerWeight)
             while (HtmlString[i++] != '>');
             i++;
-            element_div = "<div " + HPrntDivAttrInner[headerWeight] + ">"
+            element_div = "<div " + HeaderChildWrapperAttr[headerWeight] + ">"
             HtmlString = HtmlString.slice(0, i) + element_div + HtmlString.slice(i)
             i += element_div.length;
 
