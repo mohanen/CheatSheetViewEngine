@@ -12,6 +12,11 @@ h1, li, span, a {
     text-align: center;
 }
 
+h1.header-text::before{
+    content: '# ';
+    color: rgba(190, 196, 204);
+}
+
 h1 {
     font-weight: 200;
     font-size: 48px;
@@ -21,7 +26,6 @@ h2 {
     font-weight: 400;
     font-size: 24px;
     color: #745fb5;
-    padding-left: 0.25rem;
 }
 
 h3 {
@@ -61,6 +65,12 @@ ul.md-list, .cheat-card {
     border-radius: 3px;
 }
 
+.cheat-card-title {
+    margin: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 ul.md-list li {
     margin-left: 16px;
     line-height: 2rem;
@@ -73,7 +83,7 @@ ul.md-list li:hover {
 }
 
 .muted {
-    opacity: 0.25;
+    color: rgba(190, 196, 204);
 }
 
 .mw-250 {

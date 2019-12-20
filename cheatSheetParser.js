@@ -15,8 +15,8 @@ function cheatSheetParser(HtmlString) {
     }
 
     headerAttr = {
-        1: 'class=""',
-        2: 'class="header-text"',
+        1: 'class="header-text"',
+        2: 'class="cheat-card-title line"',
         3: 'class=""',
         4: 'class=""',
     }
