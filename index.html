@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="uk-background-muted">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cheater</title>
+    <title>Cheatsheet</title>
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
     <!-- UIkit CSS -->
@@ -28,8 +28,8 @@
 
     <nav class="uk-navbar-container uk-margin" uk-navbar>
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" v-on:click="home()>
-                <span class=" uk-icon uk-margin-small-right" uk-icon="icon: pencil"></span>
+            <a class="uk-navbar-item uk-logo uk-animation-slide-left" onClick="home()">
+                <span class=" uk-icon uk-margin-small-right" uk-icon="icon: pencil" ></span>
                 CheatSheet
             </a>
         </div>
@@ -37,19 +37,22 @@
 
     <section id="folders" class="uk-section" v-if="enabled">
         <div class="uk-container">
-            <h1 class="uk-heading-medium uk-heading-divider">Cheat Sheets</h1>
+            <h1 class="uk-heading-medium uk-heading-divider uk-text-lighter uk-text-uppercase">Cheat Sheets</h1>
             <div uk-grid="masonry: true" class="">
-                <div class="uk-width-1-3@s" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+                <div class="uk-width-1-3@s uk-animation-scale-up" v-for="folder in githubFolders" v-if="folder.type=='dir'">
                     <div class="uk-margin uk-card">
                         <header class="uk-card-header">
-                            <p class="uk-card-title uk-dropcap">
+                            <p class="uk-card-title uk-dropcap uk-text-light">
                                 {{hf.toHeaderCase(folder.name)}}
                             </p>
+                            <div class="uk-badge">{{folder.files.length}}</div>
+
                         </header>
                         <div class="uk-card-body">
                             <ul class="uk-list uk-list-bullet">
                                 <li v-for="file in folder.files">
-                                    <a class="" v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</a>
+                                    <a class="uk-text-large"
+                                        v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -61,12 +64,18 @@
 
     <section id="file" class="uk-section" v-if="enabled && md.type=='file'">
         <div class="uk-container">
-            <h1 class="uk-heading-medium uk-heading-divider">{{hf.toMdFileCase(md.name)}}</h1>
-            <div class="content" v-html="cheatSheetParser(mdit.render(atob(md.content)))" uk-accordion="multiple: true">
+            <h1 class="uk-heading-medium uk-text-lighter">
+                <ul class="uk-breadcrumb">
+                    <li class="uk-text-uppercase" v-for="names in hf.toMdFileCase(md.path).split('/')" >{{names}}</li>
+                </ul>
+            </h1>
+            <div class="content-md uk-margin-large-top" v-html="cheatSheetParser(mdit.render(atob(md.content)))"
+                uk-accordion="multiple: true">
             </div>
         </div>
     </section>
-    <a href="#" uk-totop uk-scroll></a>
+    <a fab-l class="uk-icon-button uk-button-primary uk-animation-scale-up" uk-totop uk-scroll></a>
+    <a fab-r class="uk-icon-button uk-button-primary uk-animation-scale-up" uk-icon="icon: home;" onClick="home()"></a>
 </body>
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

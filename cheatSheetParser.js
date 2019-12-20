@@ -2,8 +2,8 @@ function cheatSheetParser(HtmlString) {
     // return HtmlString;
 
     HPrntDivClass = {
-        1: "before section uk-margin-large",
-        2: "before uk-card uk-card-default",
+        1: "before section uk-margin-large uk-animation-slide-bottom",
+        2: "before uk-card md-card uk-background-default uk-box-shadow-small",
         3: "before box uk-margin-large-bottom",
         4: "before",
     }
@@ -15,8 +15,8 @@ function cheatSheetParser(HtmlString) {
     }
 
     headerClass = {
-        1: "after uk-accordion-title uk-heading-medium uk-heading-divider",
-        2: "uk-card-header uk-card-title uk-heading-small uk-heading-line",
+        1: "after uk-accordion-title uk-heading-medium uk-heading-divider uk-text-light",
+        2: "uk-card-header uk-card-title uk-heading-small uk-text-light",
         3: "after uk-heading-bullet",
         4: "after",
     }
@@ -38,7 +38,7 @@ function cheatSheetParser(HtmlString) {
             }
             headerWeight = parseInt(HtmlString[i]);
             headersStack.push(headerWeight)
-            element_div = "<div class='" + HPrntDivClass[headerWeight] + "'>" 
+            element_div = "<div class='" + HPrntDivClass[headerWeight] + "'>"
             headerClassTag = " class='" + headerClass[headerWeight] + "' "
             HtmlString = HtmlString.slice(0, i - 2) + element_div + HtmlString.slice(i - 2, i + 1) + headerClassTag + HtmlString.slice(i + 1)
             i += element_div.length + headerClassTag.length;
@@ -66,7 +66,7 @@ function cheatSheetParser(HtmlString) {
         i--;
     }
 
-    HtmlString = HtmlString.replace(/<table>/g, "<table class='uk-table uk-table-responsive'>")
+    HtmlString = HtmlString.replace(/<table>/g, "<table class='uk-table uk-table-striped uk-table-small uk-table-middle uk-overflow-auto'>")
     HtmlString = HtmlString.replace(/<blockquote>/g, "<blockquote class='uk-card-footer'>")
 
     return HtmlString;

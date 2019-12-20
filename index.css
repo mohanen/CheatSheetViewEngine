@@ -1,3 +1,24 @@
 .before .uk-card {
     margin-left: 30px;
 }
+
+a[fab-l] {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+}
+
+a[fab-r] {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}
+
+.content-md h1 {
+    font-size: 2.5rem;
+}
+
+.md-card {
+    outline: thin;
+}
