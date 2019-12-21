@@ -68,9 +68,6 @@ function cheatSheetParser(HtmlString) {
         i--;
     }
 
-    HtmlString = HtmlString.replace(/<table>/g, "<table class='uk-table uk-table-striped uk-table-small uk-table-middle uk-overflow-auto'>")
-    HtmlString = HtmlString.replace(/<blockquote>/g, "<blockquote class='uk-card-footer'>")
-
     return HtmlString;
 
 }

@@ -1,4 +1,6 @@
 /* #14af83 */
+@import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
 
 body {
     background-color: rgb(241, 243, 245);
@@ -8,8 +10,9 @@ h1, li, span, a {
     color: rgb(85, 99, 113);
 }
 
-.header {
+.header, .header *{
     text-align: center;
+    font-family: 'Megrim', cursive;
 }
 
 h1.header-text::before {
@@ -46,7 +49,7 @@ h3 {
 
 .badge {
     display: inline-block;
-    padding: .24rem 0.8rem;
+    padding: .24rem 0.6rem;
     border-radius: 30px;
     font-size: .8rem;
     text-align: center;
@@ -58,6 +61,8 @@ h3 {
     transform: translateY(-50%);
     margin: auto;
     box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
+    font-family: 'Fira Mono', monospace;
+
 }
 
 ul.md-list {
@@ -235,6 +240,7 @@ blockquote * {
     background: #fff;
     font-size: .96em;
     line-height: 1.5;
+    font-family: 'Fira Mono', monospace;
 }
 
 .cheat-card>div>table, .cheat-card-content>div>table {
