@@ -49,8 +49,8 @@
             </div>
         </section>
 
-        <section id="file" class="container" v-if="enabled">
-            <span class="fab-home" onclick="home()">"<"</span>
+        <section id="file" class="container" v-if="enabled && md">
+            <span class="fab-home" onclick="home()"><</span>
             <h1 class="header">
                 {{hf.toMdFileCase(md.path.replace("/"," / "))}}
                 <span class="muted">cheatsheet</span>
