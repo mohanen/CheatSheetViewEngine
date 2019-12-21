@@ -10,23 +10,25 @@ function cheatSheetParser(HtmlString) {
     HeaderChildWrapperAttr = {
         1: 'class="row"',
         2: 'class="cheat-card ovrflw-auto"',
-        3: 'class=""',
+        3: 'class="chld-seperators"',
         4: 'class=""',
     }
 
     headerAttr = {
         1: 'class="header-text"',
         2: 'class="cheat-card-title line"',
-        3: 'class=""',
+        3: 'class="cheat-card-content-title"',
         4: 'class=""',
     }
+
+    nest_header_max = 3;
 
     headersStack = []
     for (i = 0; i < HtmlString.length; i++) {
         if (HtmlString[i] != '<') continue;
         i++;
 
-        if (HtmlString[i] == 'h') {
+        if (HtmlString[i] == 'h' && parseInt(HtmlString[i+1]) <= nest_header_max) {
             i++;
             if (headersStack.length > 0) {
                 while (parseInt(HtmlString[i]) <= headersStack[headersStack.length - 1]) {
