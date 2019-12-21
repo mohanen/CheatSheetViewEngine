@@ -1,64 +1,30 @@
-/* #14af83 */
+/* imports */
 
+@import url("media_query.css");
 @import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400&display=swap');
+/* Base css */
+
+/* common Start */
+
 body {
     background-color: rgb(241, 243, 245);
 }
 
-.page-container {
-    position: relative;
-    min-height: 100vh;
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
-.page-container>section {
-    padding-bottom: 25rem;
-}
+/* https://w3bits.com/css-masonry/ */
 
-h1, li, span, a {
-    color: rgb(85, 99, 113);
-}
-
-.header {
-    margin-top: 0;
-    padding-top: 5rem;
-}
-
-.header {
-    text-align: center;
-    font-family: 'Megrim', cursive;
-}
-
-h1.header-text::before {
-    content: '# ';
-    color: rgba(190, 196, 204);
-}
-
-h1 {
-    font-weight: 200;
-    font-size: 48px;
-}
-
-h2 {
-    font-weight: 400;
-    font-size: 24px;
-    color: #745fb5;
-}
-
-h3 {
-    font-weight: 400;
-    font-size: 16px;
-    color: #108b68;
-}
-
-.header-text {
-    padding-bottom: 5px;
-    border-bottom: solid 1px rgba(102, 119, 136, .2);
-    position: relative;
-}
-
-.ovrflw-auto {
-    overflow: auto;
+.grid-item {
+    /* Masonry bricks or child elements */
+    display: inline-block;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .badge {
@@ -78,61 +44,33 @@ h3 {
     font-family: 'Fira Mono', monospace;
 }
 
-ul.md-list {
-    background-color: white;
-    padding: 16px 24px;
-    border-radius: 3px;
-    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
+/* Typhography Start */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #333447;
+    line-height: 1.5
 }
 
-.cheat-card-content {
-    background-color: white;
-    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
-    border-radius: 3px;
+h1 {
+    font-weight: 200;
+    font-size: 48px;
 }
 
-.cheat-card {
-    background-color: white;
-    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
-    border-radius: 3px;
+h2 {
+    font-weight: 400;
+    font-size: 24px;
+    color: #745fb5;
 }
 
-.cheat-card .cheat-card-content {
-    box-shadow: none;
-    border-radius: 0;
+h3 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #108b68;
 }
 
-.cheat-card-title {
-    margin: 0.5rem;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-ul.md-list li {
-    margin-left: 16px;
-    line-height: 2rem;
-    cursor: pointer;
-    position: relative;
-}
-
-ul.md-list li:hover {
-    font-weight: bold;
-}
-
-.muted {
-    color: rgba(190, 196, 204);
-}
-
-.mw-250 {
-    min-width: 250px;
-}
-
-.mw-300 {
-    min-width: 300px;
-}
-
-.mw-400 {
-    min-width: 400px;
+h1, li, span, a {
+    color: rgb(85, 99, 113);
 }
 
 /*effect-underline*/
@@ -169,49 +107,58 @@ h2.line::after {
     background: linear-gradient(to right, rgba(116, 95, 181, 0.2), transparent 80%);
 }
 
-.footer {
-    height: 20rem;
-    /* padding: 1rem 5rem; */
-    border-top: solid 1px rgba(102, 119, 136, .1);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: white;
+.ovrflw-auto {
+    overflow: auto;
 }
 
-.footer>div.footer-wrapper {
-    background: white;
+.muted {
+    color: rgba(190, 196, 204);
 }
 
-.footer h1, .footer h2, .footer h3 {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-}
+/* Typhography End */
 
-.footer ul {
+/* Header Start */
+
+.header {
     margin-top: 0;
-    margin-left: -15px;
-    margin-bottom: 0;
+    padding-top: 5rem;
 }
 
-.footer a {
-    text-decoration: none;
-    position: relative;
-    line-height: 2rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.header {
+    text-align: center;
+    font-family: 'Megrim', cursive;
 }
 
-.footer a::before {
+h1.header-text::before {
     content: '# ';
+    color: rgba(190, 196, 204);
 }
 
-.footer .head-container {
-    padding-left: 2rem;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+.header-text {
+    padding-bottom: 5px;
+    border-bottom: solid 1px rgba(102, 119, 136, .2);
+    position: relative;
 }
+
+/* Header End */
+
+/* width css Start */
+
+.mw-250 {
+    min-width: 250px;
+}
+
+.mw-300 {
+    min-width: 300px;
+}
+
+.mw-400 {
+    min-width: 400px;
+}
+
+/* width css End */
+
+/* fab Start */
 
 .fab-home {
     width: 2rem;
@@ -229,8 +176,33 @@ h2.line::after {
     z-index: 1000;
 }
 
-.cheat-card-content> :not(:first-child), .chld-seperators> :not(:first-child) {
-    border-top: solid 1px rgba(102, 119, 136, .06);
+/* fab End */
+
+/* common End */
+
+/* md cheat sheet Start */
+
+.cheat-card-content {
+    background-color: white;
+    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
+    border-radius: 3px;
+}
+
+.cheat-card {
+    background-color: white;
+    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
+    border-radius: 3px;
+}
+
+.cheat-card .cheat-card-content {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.cheat-card-title {
+    margin: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .cheat-card-content-title {
@@ -249,6 +221,10 @@ h2.line::after {
 .cheat-card-content>div>table {
     margin: 4px 24px;
     padding: 0;
+}
+
+.cheat-card-content> :not(:first-child), .chld-seperators> :not(:first-child) {
+    border-top: solid 1px rgba(102, 119, 136, .06);
 }
 
 .mdHtml blockquote {
@@ -345,3 +321,91 @@ hr {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
     display: none;
 }
+
+/* md cheat sheet End */
+
+/* List styles Start */
+
+ul.md-list {
+    background-color: white;
+    padding: 16px 24px;
+    border-radius: 3px;
+    box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
+}
+
+ul.md-list li {
+    margin-left: 16px;
+    line-height: 2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+ul.md-list li:hover {
+    font-weight: bold;
+}
+
+/* List styles End */
+
+/* Footer Start */
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.page-container>section {
+    padding-bottom: 25rem;
+}
+
+.f-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    height: 100%;
+}
+
+.footer {
+    height: 20rem;
+    /* padding: 1rem 5rem; */
+    border-top: solid 1px rgba(102, 119, 136, .1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+}
+
+.footer>div.footer-wrapper {
+    background: white;
+}
+
+.footer h1, .footer h2, .footer h3 {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.footer ul {
+    margin-top: 0;
+    margin-left: -15px;
+    margin-bottom: 0;
+}
+
+.footer a {
+    text-decoration: none;
+    position: relative;
+    line-height: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.footer a::before {
+    content: '# ';
+}
+
+.footer .head-container {
+    padding: 2rem;
+}
+
+/* Footer End */

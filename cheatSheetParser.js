@@ -1,11 +1,11 @@
 function cheatSheetParser(HtmlString) {
     HeaderWrapperAttr = {
         1: 'class=""',
-        2: 'class="col-4 mw-300"',
+        2: 'class="grid-item mw-300"',
         3: 'class="cheat-card-content ovrflw-auto"',
     }
     HeaderChildWrapperAttr = {
-        1: 'class="row"',
+        1: 'class="grid"',
         2: 'class="cheat-card ovrflw-auto"',
         3: 'class="chld-seperators ovrflw-auto"',
     }
