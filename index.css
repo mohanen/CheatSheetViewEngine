@@ -1,16 +1,30 @@
 /* #14af83 */
+
 @import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
-
 body {
     background-color: rgb(241, 243, 245);
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.page-container>section {
+    padding-bottom: 25rem;
 }
 
 h1, li, span, a {
     color: rgb(85, 99, 113);
 }
 
-.header, .header *{
+.header {
+    margin-top: 0;
+    padding-top: 5rem;
+}
+
+.header, .header * {
     text-align: center;
     font-family: 'Megrim', cursive;
 }
@@ -62,7 +76,6 @@ h3 {
     margin: auto;
     box-shadow: 0 6px 8px rgba(102, 119, 136, .03), 0 1px 2px rgba(102, 119, 136, .3);
     font-family: 'Fira Mono', monospace;
-
 }
 
 ul.md-list {
@@ -157,7 +170,47 @@ h2.line::after {
 }
 
 .footer {
-    height: 100px;
+    height: 20rem;
+    /* padding: 1rem 5rem; */
+    border-top: solid 1px rgba(102, 119, 136, .1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+}
+
+.footer>div.footer-wrapper {
+    background: white;
+}
+
+.footer h1, .footer h2, .footer h3 {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.footer ul {
+    margin-top: 0;
+    margin-left: -15px;
+    margin-bottom: 0;
+}
+
+.footer a {
+    text-decoration: none;
+    position: relative;
+    line-height: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.footer a::before {
+    content: '# ';
+}
+
+.footer .head-container {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .fab-home {

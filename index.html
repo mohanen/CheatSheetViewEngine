@@ -14,48 +14,92 @@
 </head>
 
 <body>
+    <div class="page-container">
+        <section id="folders" class="container" v-if="enabled">
+            <h1 class="header">
+                Deja Vu
+            </h1>
+            <div class="row">
 
-    <section id="folders" class="container" v-if="enabled">
-        <h1 class="header">
-            Deja Vu
-        </h1>
-        <div class="row">
+                <div class="col-3 mw-250 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
 
-            <div class="col-3 mw-250 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+                    <h2 class="header-text">
+                        {{hf.toHeaderCase(folder.name)}}
+                        <span class="badge">{{folder.files && folder.files.length}}</span>
+                    </h2>
+                    <ul class="md-list">
 
-                <h2 class="header-text">
-                    {{hf.toHeaderCase(folder.name)}}
-                    <span class="badge">{{folder.files && folder.files.length}}</span>
-                </h2>
-                <ul class="md-list">
+                        <li v-if="folder.files" v-for="file in folder.files">
+                            <span v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</span>
+                        </li>
 
-                    <li v-if="folder.files" v-for="file in folder.files">
-                        <span v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</span>
-                    </li>
+                    </ul>
 
-                </ul>
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
-        </div>
-    </section>
+        <section id="file" class="container" v-if="enabled">
+            <span class="fab-home" onclick="home()">
+                <</span> <h1 class="header">
+                    {{hf.toMdFileCase(md.path.replace("/"," / "))}}
+                    <span class="muted">cheatsheet</span>
+                    </h1>
+                    <div v-html="cheatSheetParser(mdit.render(atob(md.content)))">
+                    </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-wrapper">
+                <div class="container">
 
-    <section id="file" class="container" v-if="enabled">
-        <span class="fab-home" onclick="home()"><</span>
+                    <div class="row">
+                        <div class="col-5 head-container mw-300">
+                            <h1 class="header">Deja Vu</h1>
+                            <h3>An Cheatsheet hobby Project.</h3>
+                            <!-- <h3>Inspired from #Devhints</h3> -->
+                            <br>
+                            <a class="effect-underline" href="">Source</a>
+                            <a class="effect-underline" href="">Cheatsheets</a>
+                        </div>
+                        <div class="col-7 head-container mw-400">
+                            <h2>Can't done this without</h2>
+                            <div class="row">
+                                <div class="col-6">
 
-        <h1 class="header">
-            {{hf.toMdFileCase(md.path.replace("/"," / "))}}
-            <span class="muted">cheatsheet</span>
-        </h1>
-        <div v-html="cheatSheetParser(mdit.render(atob(md.content)))">
-        </div>
-    </section>
-    <section class="footer">
+                                    <ul>
+                                        <li><a class="effect-underline" href="https://devhints.io">Devhints</a></li>
+                                        <li><a class="effect-underline" href="https://simplegrid.io">Simple Grid</a>
+                                        </li>
+                                        <li><a class="effect-underline" href="https://github.com">Git Hub</a></li>
+                                        <li><a class="effect-underline" href="https://github.com/mohanen">Mohanen</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
 
-    </section>
+                                    <ul>
+                                        <li><a class="effect-underline" href="https://vuejs.org">Vue</a></li>
+                                        <li><a class="effect-underline"
+                                                href="https://csstools.github.io/sanitize.css">Sanitize</a>
+                                        </li>
+                                        <li><a class="effect-underline" href="https://github.com/axios/axios">Axios</a>
+                                        </li>
+                                        <li><a class="effect-underline"
+                                                href="https://markdown-it.github.io">Markdown-it</a>
+                                        </li>
 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
