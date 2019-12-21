@@ -35,40 +35,32 @@
                 Déjà Vu
             </h1>
             <div class="row">
-
-                <div class="col-3 mw-250 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
-
+                <div class="col-4 mw-250 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
                     <h2 class="header-text">
                         {{hf.toHeaderCase(folder.name)}}
                         <span class="badge">{{folder.files && folder.files.length}}</span>
                     </h2>
                     <ul class="md-list">
-
                         <li v-if="folder.files" v-for="file in folder.files">
                             <span v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</span>
                         </li>
-
                     </ul>
-
                 </div>
-
             </div>
-
         </section>
 
         <section id="file" class="container" v-if="enabled">
-            <span class="fab-home" onclick="home()">
-                <</span> <h1 class="header">
-                    {{hf.toMdFileCase(md.path.replace("/"," / "))}}
-                    <span class="muted">cheatsheet</span>
-                    </h1>
-                    <div v-html="cheatSheetParser(mdit.render(atob(md.content)))">
-                    </div>
+            <span class="fab-home" onclick="home()">"<"</span>
+            <h1 class="header">
+                {{hf.toMdFileCase(md.path.replace("/"," / "))}}
+                <span class="muted">cheatsheet</span>
+            </h1>
+            <div class="mdHtml" v-html="cheatSheetParser(mdit.render(atob(md.content)))"></div>
         </section>
+
         <footer class="footer">
             <div class="footer-wrapper">
                 <div class="container">
-
                     <div class="row">
                         <div class="col-5 head-container mw-300">
                             <h1 class="header">Déjà Vu</h1>
@@ -111,7 +103,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </footer>
     </div>

@@ -1,24 +1,19 @@
 function cheatSheetParser(HtmlString) {
-    // return HtmlString;
-
     HeaderWrapperAttr = {
         1: 'class=""',
-        2: 'class="col-3 mw-300"',
+        2: 'class="col-4 mw-400"',
         3: 'class="cheat-card-content ovrflw-auto"',
-        4: 'class=""',
     }
     HeaderChildWrapperAttr = {
         1: 'class="row"',
         2: 'class="cheat-card ovrflw-auto"',
-        3: 'class="chld-seperators"',
-        4: 'class=""',
+        3: 'class="chld-seperators ovrflw-auto"',
     }
 
     headerAttr = {
         1: 'class="header-text"',
         2: 'class="cheat-card-title line"',
         3: 'class="cheat-card-content-title"',
-        4: 'class=""',
     }
 
     nest_header_max = 3;
