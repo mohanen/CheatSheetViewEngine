@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Déjà Vu Edit</title>
+
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="dejavu, cheatsheet, dejavu cheatsheet, deja vu, Déjà Vu, déjà vu">
+    <meta name="description" content="A Cheatsheet hobby Project." />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="Déjà Vu">
+    <meta name="twitter:card" value="A Cheatsheet hobby Project.">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Déjà Vu" />
+    <meta property="og:description" content="A Cheatsheet hobby Project." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google verification -->
+    <meta name="google-site-verification" content="7Vic0bN92viv5L886vTqTqdncRfOMsVF3SXMH3fNLlg" />
+
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="editor.css">
+
+</head>
+
+<body>
+    <div class="page-container">
+        <section class="container">
+            <div class="split">
+                <div id="editor" class="side mw-400">
+                    <h1 class="header">
+                        Déjà Vu Editor
+                    </h1>
+                    <textarea id="editorArea"  onchange="updateVu()" contenteditable="true" draggable="false">
+                    </textarea>
+                </div>
+                <div id="visual" class="side mw-400">
+                    <h1 class="header">
+                        Preview
+                    </h1>
+                    <div id="mdHtmlVu" class="mdHtml">
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+                <div class="f-row container">
+                    <div class="head-container mw-300">
+                        <h1 class="header">Déjà Vu</h1>
+                        <h3>A Cheatsheet hobby Project.</h3>
+                        <!-- <h3>Inspired from #Devhints</h3> -->
+                        <br>
+                        <a class="effect-underline" href="https://github.com/mohanen/dejavu">Source</a>
+                        <a class="effect-underline" href="https://github.com/mohanen/cheatsheets">Cheatsheets</a>
+                    </div>
+                    <div class="head-container mw-400">
+                        <h2>Can't done this without</h2>
+                        <div class="f-row">
+                            <div class="">
+
+                                <ul>
+                                    <li><a class="effect-underline" href="https://devhints.io">Devhints</a></li>
+                                    <li><a class="effect-underline" href="https://github.com">Git Hub</a></li>
+                                    <li><a class="effect-underline" href="https://www.mathjax.org">Mathjax</a>
+                                    <li><a class="effect-underline" href="https://github.com/mohanen">Mohanen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="">
+
+                                <ul>
+                                    <li><a class="effect-underline" href="https://vuejs.org">Vue</a></li>
+                                    <li><a class="effect-underline"
+                                            href="https://csstools.github.io/sanitize.css">Sanitize</a>
+                                    </li>
+                                    <li><a class="effect-underline" href="https://github.com/axios/axios">Axios</a>
+                                    </li>
+                                    <li><a class="effect-underline" href="https://markdown-it.github.io">Markdown-it</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>
+
+<script src="index.js"></script>
+<script src="cheatSheetParser.js"></script>
+
+<script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    function updateVu() {
+        document.getElementById("mdHtmlVu").innerHTML = cheatSheetParser(mdit.render(document.getElementById("editorArea").value))
+        MathJax && MathJax.typeset && MathJax.typeset()
+    }
+</script>
+
+</html>

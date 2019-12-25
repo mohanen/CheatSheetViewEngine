@@ -1,0 +1,13 @@
+
+#editor {
+    /* background-color: white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#editor textarea {
+    width: 60%;
+    min-height: 400px;
+    padding: 20px;
+}
